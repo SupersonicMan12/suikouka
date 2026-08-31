@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import './App.css'
 import { CAFES } from './data/cafes'
+import { SIGNATURES_ZH } from './data/signaturesZh'
 import type { Cafe } from './data/types'
 import { isMoreCommand, type Intent } from './lib/intent'
 import { rank } from './lib/match'
@@ -13,17 +14,17 @@ const CENTER = { lng: 121.4737, lat: 31.2304 }
 
 type Stage = 'idle' | 'listening' | 'thinking' | 'deck' | 'unsupported'
 
-const ZH = navigator.language.toLowerCase().startsWith('zh')
-const SPEECH_LANG = ZH ? 'zh-CN' : 'en-US'
+const SPEECH_LANG = 'zh-CN'
 
 const ORDINALS_ZH = ['第一家', '第二家', '第三家']
-const ORDINALS_EN = ['First', 'Second', 'Third']
+
+function signatureZh(c: Cafe): string {
+  return SIGNATURES_ZH[c.id] ?? c.signature
+}
 
 function narration(r: NearRanked, i: number): string {
   const c = r.cafe
-  return ZH
-    ? `${ORDINALS_ZH[i]}，${c.nameZh || c.name}，步行${r.minutes}分钟，${c.signature}。`
-    : `${ORDINALS_EN[i]}: ${c.name}, a ${r.minutes} minute walk. Known for ${c.signature}.`
+  return `${ORDINALS_ZH[i]}，${c.nameZh || c.name}，步行${r.minutes}分钟，${signatureZh(c)}。`
 }
 
 function priceMarks(p: Cafe['price']): string {
@@ -63,7 +64,7 @@ export default function App() {
       (pos) => {
         anchorRef.current = { kind: 'me', lng: pos.coords.longitude, lat: pos.coords.latitude }
       },
-      () => setNotice(ZH ? '拿不到定位，先从人民广场算起' : 'No location — measuring from People\u2019s Square'),
+      () => setNotice('拿不到定位，先从人民广场算起'),
       { enableHighAccuracy: true, timeout: 8000, maximumAge: 120000 },
     )
   }, [])
@@ -80,7 +81,7 @@ export default function App() {
     }
     if (runRef.current !== run) return
     setSlide(picks.length)
-    await speak(ZH ? '再说一句，帮你换一批。' : 'Say another word and I\u2019ll find you more.', SPEECH_LANG)
+    await speak('再说一句，帮你换一批。', SPEECH_LANG)
   }, [])
 
   const handleTranscript = useCallback(
@@ -99,7 +100,7 @@ export default function App() {
       const near = rankNear(ranked, anchorRef.current)
       const picks = near.slice(nextRound * 3, nextRound * 3 + 3)
       if (picks.length === 0) {
-        setNotice(ZH ? '这个条件附近找不到了，换个说法试试' : 'Nothing left nearby for that — try rewording')
+        setNotice('这个条件附近找不到了，换个说法试试')
         setStage('idle')
         return
       }
@@ -130,9 +131,9 @@ export default function App() {
       (text) => void handleTranscript(text),
       (err) => {
         setStage('idle')
-        if (err === 'no-speech') setNotice(ZH ? '没听清，再点一下试试' : 'Didn\u2019t catch that — tap and try again')
-        else if (err === 'not-allowed') setNotice(ZH ? '需要麦克风权限才能听你说' : 'I need microphone permission to listen')
-        else setNotice(ZH ? '这台浏览器的语音识别开小差了' : 'Speech recognition hiccuped on this browser')
+        if (err === 'no-speech') setNotice('没听清，再点一下试试')
+        else if (err === 'not-allowed') setNotice('需要麦克风权限才能听你说')
+        else setNotice('这台浏览器的语音识别开小差了')
       },
     )
   }, [handleTranscript, locate])
@@ -141,11 +142,7 @@ export default function App() {
     return (
       <main className="stage">
         <div className="mark">随口咖</div>
-        <p className="tagline">
-          {ZH
-            ? '这台浏览器不支持语音识别 — 用 iPhone 的 Safari 或系统自带浏览器打开试试。'
-            : 'This browser has no speech recognition — try Safari on iPhone or your system browser.'}
-        </p>
+        <p className="tagline">这台浏览器不支持语音识别 — 用 iPhone 的 Safari 或系统自带浏览器打开试试。</p>
       </main>
     )
   }
@@ -159,21 +156,21 @@ export default function App() {
         {done ? (
           <>
             <div className="mark small">随口咖</div>
-            <p className="tagline">{ZH ? '点一下，再说一句' : 'Tap, then say another word'}</p>
-            <p className="hint">{ZH ? '说「换一批」看下三家' : 'Say \u201cmore\u201d for the next three'}</p>
+            <p className="tagline">点一下，再说一句</p>
+            <p className="hint">说「换一批」看下三家</p>
           </>
         ) : (
           <article className="slide" key={slide}>
-            <div className="ordinal">{ZH ? ORDINALS_ZH[slide] : ORDINALS_EN[slide]}</div>
-            <h1 className="cafe-name">{ZH ? c.nameZh || c.name : c.name}</h1>
-            <div className="cafe-sub">{ZH ? c.name : c.nameZh}</div>
-            <p className="reason">{c.signature}</p>
+            <div className="ordinal">{ORDINALS_ZH[slide]}</div>
+            <h1 className="cafe-name">{c.nameZh || c.name}</h1>
+            <div className="cafe-sub">{c.nameZh ? c.name : ''}</div>
+            <p className="reason">{signatureZh(c)}</p>
             <div className="facts">
-              <span>{ZH ? `步行 ${r.minutes} 分钟` : `${r.minutes} min walk`}</span>
+              <span>{`步行 ${r.minutes} 分钟`}</span>
               <span>{priceMarks(c.price)}</span>
-              <span>{ZH ? `开到 ${closes(c)}` : `open till ${closes(c)}`}</span>
+              <span>{`开到 ${closes(c)}`}</span>
             </div>
-            <div className="street">{ZH ? c.streetZh : c.street}</div>
+            <div className="street">{c.streetZh || c.street}</div>
             <div className="dots">
               {results.map((_, i) => (
                 <i key={i} className={i === slide ? 'on' : ''} />
@@ -190,18 +187,16 @@ export default function App() {
       <div className={`mark ${stage === 'listening' ? 'breathing' : ''}`}>随口咖</div>
       {stage === 'idle' && (
         <>
-          <p className="tagline">{ZH ? '点一下，随口说说你的场合和需求' : 'Tap once, then just say the occasion'}</p>
-          <p className="hint">
-            {ZH ? '「我想找个安静的地方工作两小时，别太贵」' : '\u201cSomewhere quiet to work for two hours, not too pricey\u201d'}
-          </p>
+          <p className="tagline">点一下，随口说说你的场合和需求</p>
+          <p className="hint">「我想找个安静的地方工作两小时，别太贵」</p>
         </>
       )}
-      {stage === 'listening' && <p className="tagline live">{interim || (ZH ? '在听……' : 'Listening\u2026')}</p>}
+      {stage === 'listening' && <p className="tagline live">{interim || '在听……'}</p>}
       {stage === 'thinking' && (
         <>
           <p className="tagline">{interim}</p>
           <p className="hint">
-            {intent?.heard.map((h) => (ZH ? h.zh : h.en)).join(' · ') || (ZH ? '想想看……' : 'Thinking\u2026')}
+            {intent?.heard.map((h) => h.zh).join(' · ') || '想想看……'}
           </p>
         </>
       )}
