@@ -1,0 +1,157 @@
+.stage {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  padding: 2rem 1.6rem calc(2rem + env(safe-area-inset-bottom));
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mark {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: clamp(3.4rem, 16vw, 5.2rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.mark.small {
+  font-size: clamp(2.2rem, 9vw, 3rem);
+}
+
+.mark.breathing {
+  animation: breathe 2.2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.04);
+  }
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: var(--ink);
+  max-width: 26em;
+  line-height: 1.7;
+}
+
+.tagline.live {
+  font-style: italic;
+  min-height: 3.4em;
+}
+
+.hint {
+  font-size: 0.92rem;
+  color: var(--faded);
+  max-width: 24em;
+  line-height: 1.7;
+}
+
+.notice {
+  font-size: 0.88rem;
+  color: var(--accent);
+}
+
+/* ── the presentation deck ─────────────────────────────── */
+
+.deck {
+  justify-content: center;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  animation: arrive 0.7s ease both;
+  max-width: 34em;
+}
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ordinal {
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--faded);
+}
+
+.cafe-name {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: clamp(2.3rem, 10vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0;
+}
+
+.cafe-sub {
+  font-size: 1rem;
+  color: var(--faded);
+}
+
+.reason {
+  font-size: 1.12rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.facts {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.facts span {
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2px;
+}
+
+.street {
+  font-size: 0.9rem;
+  color: var(--faded);
+}
+
+.dots {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: 0.6rem;
+}
+
+.dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--faded);
+  opacity: 0.4;
+}
+
+.dots i.on {
+  background: var(--accent);
+  opacity: 1;
+}

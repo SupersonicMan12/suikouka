@@ -1,0 +1,12 @@
+{
+  "name": "随口咖 · 说一句，给你三家",
+  "short_name": "随口咖",
+  "description": "随口说一句场合和需求，三家最合适的上海咖啡馆自己走到你面前。",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f3e9dc",
+  "theme_color": "#f3e9dc",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
