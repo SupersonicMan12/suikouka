@@ -27,6 +27,7 @@ jobs:
       - run: npm run build
         env:
           BASE_PATH: /suikouka/
+          VITE_INTENT_RELAY: https://suikouka-relay-btdpwnwhqv.cn-shanghai.fcapp.run
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

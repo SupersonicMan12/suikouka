@@ -1,0 +1,23 @@
+edition: 3.0.0
+name: suikouka
+access: default
+resources:
+  relay:
+    component: fc3
+    props:
+      region: cn-shanghai
+      functionName: suikouka-relay
+      description: 随口咖 intent relay (Qwen via DashScope)
+      runtime: nodejs20
+      handler: index.handler
+      code: ./code
+      memorySize: 128
+      timeout: 20
+      environmentVariables:
+        DASHSCOPE_API_KEY: ${env('DASHSCOPE_API_KEY')}
+      triggers:
+        - triggerName: http
+          triggerType: http
+          triggerConfig:
+            authType: anonymous
+            methods: [POST, OPTIONS]
