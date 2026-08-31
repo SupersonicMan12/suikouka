@@ -53,3 +53,5 @@ wrangler secret put DASHSCOPE_API_KEY
   for recognition and CosyVoice for narration through the same relay.
 - Dataset and scoring are snapshots from the Atlas; see its `?` methodology
   page for how the axes are derived.
+
+Live: https://supersonicman12.github.io/suikouka/
