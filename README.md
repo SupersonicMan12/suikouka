@@ -54,4 +54,10 @@ wrangler secret put DASHSCOPE_API_KEY
 - Dataset and scoring are snapshots from the Atlas; see its `?` methodology
   page for how the axes are derived.
 
+## 忙闲预估怎么算
+
+页面上的「预估·空 / 适中 / 挤」不是实时客流。它按星期几、当前小时和门店类型套用一条经验曲线：商场店在周末 13–17 点、工作日午间更忙；适合办公的店在工作日 9–11 点和 14–17 点更忙；社区店在周末 10–12 点及 14–17 点更忙。高峰前后的一小时会线性渐变，其余时段使用较低基线。
+
+曲线会按点评图片或评价数量（没有时用高德评分）估算的人气修正，再按座位数修正容量：小店更容易挤、大店更能容纳客人。若当前不在营业时间，页面不显示预估。所有结果都是模型推断，绝不冒充实时数据。
+
 Live: https://supersonicman12.github.io/suikouka/
