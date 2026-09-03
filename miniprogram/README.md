@@ -16,10 +16,14 @@
 - 在「设置 → 服务内容声明 / 接口设置」申请 `wx.getLocation` 接口权限。
 - `wx.request` 使用的中继域名必须是已 ICP 备案的 HTTPS 合法域名。
 - 本项目没有调用 `wx.downloadFile`，因此图片不需要加入 downloadFile 合法域名；`<image>` 的外部 `src` 可直接使用。
-- 当前详情数据实际出现的图片主机包括：
+- 常见图片域名包括：
   - `store.is.autonavi.com`
+  - `aos-comment.amap.com`
+  - `img.meituan.net`
+  - `p0.meituan.net`
+  - `qcloud.dpfile.com`
+- 当前详情数据实际出现的图片主机还包括：
   - `aos-cdn-image.amap.com`
   - `comment-oss-online.oss-cn-wulanchabu.aliyuncs.com`
   - `img.alicdn.com`
-  - `aos-comment.amap.com`
-  正式发布时按微信后台的图片域名规则检查并配置。
+  正式发布时按实际数据和微信后台规则检查并配置。
