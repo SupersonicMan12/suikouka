@@ -64,6 +64,7 @@ export default function App() {
   const handleTranscriptRef = useRef<((text: string) => Promise<void>) | null>(null)
   const continuationTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const activityTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const pinnedRef = useRef(false)
 
   useEffect(() => {
     primeVoices()
@@ -76,6 +77,7 @@ export default function App() {
   }, [])
 
   const locate = useCallback(() => {
+    if (pinnedRef.current) return
     if (!('geolocation' in navigator)) return
     navigator.geolocation.getCurrentPosition(
       (pos) => {
@@ -187,7 +189,14 @@ export default function App() {
   useEffect(() => {
     if (deepLinkDone.current) return
     deepLinkDone.current = true
-    const m = /[#?&]q=([^&]+)/.exec(window.location.hash || window.location.search)
+    const query = `${window.location.search}${window.location.hash}`
+    const at = /[#?&]at=(-?[\d.]+),(-?[\d.]+)/.exec(query)
+    if (at) {
+      pinnedRef.current = true
+      anchorRef.current = { kind: 'pin', lat: Number(at[1]), lng: Number(at[2]) }
+      setNotice(`定位已设为 ${at[1]}, ${at[2]}`)
+    }
+    const m = /[#?&]q=([^&]+)/.exec(query)
     if (m) setTimeout(() => void handleTranscript(decodeURIComponent(m[1])), 0)
   }, [handleTranscript])
 
