@@ -1,0 +1,1604 @@
+{
+  "rac-anfu": [
+    "outdoor",
+    "street",
+    "food",
+    "late"
+  ],
+  "arabica-ferguson": [
+    "outdoor",
+    "street",
+    "tea",
+    "late"
+  ],
+  "drops-wukang": [
+    "street",
+    "takeaway",
+    "late"
+  ],
+  "amokka-anfu": [
+    "outdoor",
+    "street",
+    "laptop",
+    "quiet",
+    "pet",
+    "late"
+  ],
+  "fine-line": [
+    "street",
+    "takeaway",
+    "late"
+  ],
+  "funk-and-kale": [
+    "outdoor",
+    "street",
+    "food",
+    "late"
+  ],
+  "lgmy-wuyuan": [
+    "outdoor",
+    "street",
+    "laptop",
+    "quiet",
+    "late"
+  ],
+  "cafe-1984": [
+    "outdoor",
+    "street",
+    "late"
+  ],
+  "rumors-roastery": [
+    "outdoor",
+    "street",
+    "late"
+  ],
+  "coffee-tree": [
+    "outdoor",
+    "street",
+    "food",
+    "late"
+  ],
+  "apollo-anfu": [
+    "outdoor",
+    "street",
+    "late",
+    "tea"
+  ],
+  "del-volcan-yongkang": [
+    "street",
+    "takeaway",
+    "late"
+  ],
+  "m3-yongkang": [
+    "street",
+    "takeaway",
+    "late"
+  ],
+  "bitter-donkey": [
+    "street",
+    "pet",
+    "late"
+  ],
+  "kaffeine-xiangyang": [
+    "outdoor",
+    "street",
+    "laptop",
+    "quiet",
+    "late"
+  ],
+  "phenomenal": [
+    "street",
+    "late"
+  ],
+  "clickii": [
+    "street",
+    "takeaway",
+    "late"
+  ],
+  "sumi-coffee": [
+    "outdoor",
+    "street",
+    "tea",
+    "late"
+  ],
+  "parsons-coffee": [
+    "mall",
+    "laptop",
+    "quiet",
+    "late"
+  ],
+  "ops-taiyuan": [
+    "street",
+    "takeaway",
+    "late"
+  ],
+  "captain-george": [],
+  "pain-chaud": [],
+  "metal-hands-nanchang": [
+    "outdoor"
+  ],
+  "radar-sinan": [],
+  "zha-gou": [
+    "outdoor"
+  ],
+  "cafe-chez-w": [],
+  "hof-fuxing": [
+    "late"
+  ],
+  "old-china-hand": [],
+  "blacksheep-jianguo": [],
+  "cafe-dan-tianzifang": [],
+  "coffee-belt": [],
+  "egg-xiangyang": [
+    "outdoor"
+  ],
+  "plusone-julu": [
+    "outdoor"
+  ],
+  "fumi-coffee": [],
+  "soeng-lok": [],
+  "graze-changle": [],
+  "mata-mata": [
+    "outdoor"
+  ],
+  "wakewake": [],
+  "42-coffee": [],
+  "common-ground": [],
+  "boom-boom-bagels": [
+    "food"
+  ],
+  "seesaw-yuyuan": [
+    "outdoor",
+    "laptop",
+    "late"
+  ],
+  "akimbo-lab": [],
+  "smaka": [
+    "tea",
+    "food",
+    "late"
+  ],
+  "brut-cake": [],
+  "single-origin-jiaozhou": [],
+  "aunn-cafe": [
+    "laptop",
+    "late"
+  ],
+  "blue-tree-yuyuan": [
+    "late"
+  ],
+  "roaster-cafe-yuyuan": [],
+  "manner-nanyang": [
+    "takeaway",
+    "late"
+  ],
+  "sumerian": [
+    "food",
+    "late"
+  ],
+  "starbucks-roastery": [
+    "view",
+    "late"
+  ],
+  "moon-coffee": [],
+  "coffee-enough": [
+    "takeaway",
+    "late"
+  ],
+  "bigger-than-bigger": [],
+  "koii-weihai": [
+    "laptop",
+    "late"
+  ],
+  "page-coffee": [
+    "laptop",
+    "late"
+  ],
+  "blue-bottle-creek": [
+    "view",
+    "late"
+  ],
+  "stable-m50": [
+    "outdoor",
+    "late"
+  ],
+  "brownie-project": [
+    "food",
+    "outdoor",
+    "late"
+  ],
+  "the-lounge-guangfu": [
+    "view",
+    "window",
+    "laptop",
+    "quiet"
+  ],
+  "horiguchi-yuanmingyuan": [
+    "quiet"
+  ],
+  "arabica-bund": [
+    "view",
+    "laptop",
+    "late"
+  ],
+  "alt-coffee-hongkou": [
+    "laptop"
+  ],
+  "cafe-monsieur": [
+    "view",
+    "laptop",
+    "late"
+  ],
+  "central-perk-hongkou": [
+    "laptop",
+    "late"
+  ],
+  "passo-lujiazui": [
+    "late"
+  ],
+  "silverflow-pudong": [
+    "laptop",
+    "late"
+  ],
+  "minism-pudong": [
+    "late"
+  ],
+  "three-thirds": [
+    "laptop",
+    "late"
+  ],
+  "hefa-wuyi": [
+    "pet",
+    "street"
+  ],
+  "luneurs-xingfuli": [],
+  "january-cafe": [
+    "quiet",
+    "late"
+  ],
+  "hexagon-urumqi": [
+    "laptop",
+    "late"
+  ],
+  "art-gallery-cafe": [
+    "quiet"
+  ],
+  "popeline-hongkou": [],
+  "heirloom-wujin": [
+    "laptop",
+    "street"
+  ],
+  "jegard-zhapu": [],
+  "chowchow-harbin": [
+    "late",
+    "food"
+  ],
+  "shengli-zhapu": [
+    "late"
+  ],
+  "naomao-jinchao": [
+    "late",
+    "outdoor"
+  ],
+  "smellycat-harbin": [],
+  "grid-baiyulan": [],
+  "tuan-baiyulan": [],
+  "doushanshan-huangpu-rd": [
+    "view"
+  ],
+  "pulltab-baiyulan": [],
+  "aoshiti-dongdaming": [],
+  "huazhi-liyang": [
+    "outdoor"
+  ],
+  "canil-liyang": [
+    "outdoor"
+  ],
+  "bingo-hongkou": [
+    "late"
+  ],
+  "la-parisienne-zhangyang": [],
+  "little-duck-dongchang": [],
+  "harsh-honey-dongchang": [],
+  "coffee-here-lujiazui": [],
+  "lotus-club-lujiazui": [],
+  "cubic3-shangyuewan": [],
+  "aokka-expo": [],
+  "we-expo-museum": [
+    "view"
+  ],
+  "after-coffee-96": [],
+  "ailaooo-expo": [],
+  "mengongfang-tangqiao": [],
+  "lb-shijihui": [
+    "mall",
+    "takeaway",
+    "late"
+  ],
+  "baluoho-yangjing": [
+    "quiet"
+  ],
+  "kristime-lujiazui": [
+    "food",
+    "mall"
+  ],
+  "swag-dongfang": [],
+  "nodcafe-m50": [
+    "laptop"
+  ],
+  "bird-water-tower-m50": [
+    "view"
+  ],
+  "elefanco-changshou": [
+    "late"
+  ],
+  "rusty-jiangning": [],
+  "maoxianniao-tongyili": [
+    "outdoor",
+    "pet"
+  ],
+  "half-stage-tongyili": [
+    "view",
+    "outdoor"
+  ],
+  "youshan-caoyang": [],
+  "bobido-dongxin": [
+    "food"
+  ],
+  "moxy-aomen": [
+    "late"
+  ],
+  "cafe-de-seoul-putuo": [
+    "tea"
+  ],
+  "traveled-putuo": [
+    "tea"
+  ],
+  "foom-tianangianshu": [
+    "view"
+  ],
+  "cuiqu-caoyang": [
+    "laptop",
+    "late"
+  ],
+  "lanna-yuyuan-e": [],
+  "dolphin-beijing-w": [
+    "laptop"
+  ],
+  "1454s-nanjing-w": [],
+  "ls-book-cafe": [
+    "quiet",
+    "late"
+  ],
+  "coin-jiaozhou": [
+    "takeaway",
+    "street"
+  ],
+  "caffaina-jingan": [
+    "view",
+    "late"
+  ],
+  "salumeria-jingan": [
+    "outdoor",
+    "pet"
+  ],
+  "kicking-beans-wuding": [
+    "outdoor",
+    "pet",
+    "street"
+  ],
+  "masse-jingan": [
+    "late"
+  ],
+  "regards-espresso": [
+    "takeaway",
+    "street"
+  ],
+  "the-others-jingan": [],
+  "21-gram-jingan": [
+    "takeaway",
+    "street"
+  ],
+  "marmalade-nanyang": [
+    "outdoor"
+  ],
+  "old-six-suzhou": [
+    "view",
+    "late"
+  ],
+  "lyze-beijing-w": [
+    "outdoor",
+    "street"
+  ],
+  "brewista-zhongxing": [],
+  "ora-kerry": [
+    "takeaway",
+    "street"
+  ],
+  "luming-hepan": [
+    "view"
+  ],
+  "trung-nguyen-jingan": [],
+  "tutu-fengyang": [
+    "pet"
+  ],
+  "mr-beans-zhabei": [
+    "laptop"
+  ],
+  "621-maotai": [],
+  "chilly-bean-gubei": [
+    "outdoor",
+    "pet"
+  ],
+  "komeda-jinhongqiao": [
+    "mall",
+    "tea",
+    "food"
+  ],
+  "caijun-hongqiao-art": [
+    "late"
+  ],
+  "tangji-jinhongqiao": [
+    "mall",
+    "takeaway"
+  ],
+  "wabi-yuyuan": [
+    "late",
+    "food"
+  ],
+  "boundless-way-yuyuan": [
+    "late"
+  ],
+  "offbeat-yuyuan": [],
+  "algebraist-meiguifang": [],
+  "foty-yuyuan": [
+    "laptop"
+  ],
+  "morning-cc-anhua": [
+    "late",
+    "pet"
+  ],
+  "doorken-yuyuan": [],
+  "into-the-force-yuyuan": [],
+  "saturnbird-space-yuyuan": [],
+  "guanchi-yuyuan": [
+    "outdoor"
+  ],
+  "double-win-zunyi": [],
+  "nectar-jiangsu-rd": [],
+  "nine-o-nine-wanhangdu": [
+    "outdoor",
+    "pet"
+  ],
+  "radio-station-yuyuan": [],
+  "polly-boli-dingxi": [
+    "pet"
+  ],
+  "lina-xinhua": [
+    "outdoor"
+  ],
+  "maancat-yanan-w": [
+    "late",
+    "quiet",
+    "food",
+    "laptop"
+  ],
+  "la-casbah-huaihai": [
+    "quiet",
+    "food",
+    "laptop"
+  ],
+  "777-yongjia": [
+    "takeaway",
+    "decaf"
+  ],
+  "h2-yongjia": [
+    "quiet",
+    "laptop"
+  ],
+  "bug-maoming": [
+    "quiet",
+    "laptop"
+  ],
+  "bread-etc-gaoan": [
+    "outdoor",
+    "food",
+    "tea",
+    "pet"
+  ],
+  "jardin-du-coq-wukang": [
+    "outdoor",
+    "pet",
+    "quiet",
+    "window",
+    "view"
+  ],
+  "area-31-anfu": [
+    "quiet",
+    "laptop"
+  ],
+  "absurd-jianguo-w": [
+    "quiet",
+    "laptop"
+  ],
+  "modi-wulumuqi": [
+    "window",
+    "quiet",
+    "pet"
+  ],
+  "chez-shibata-tianyaoqiao": [
+    "food",
+    "tea",
+    "pet"
+  ],
+  "bonus-guoda": [
+    "takeaway",
+    "decaf"
+  ],
+  "isoul-fuxing": [
+    "laptop",
+    "quiet"
+  ],
+  "puppy-cubby-xiangyang": [
+    "outdoor",
+    "pet",
+    "quiet"
+  ],
+  "big-bagel-yongkang": [
+    "food",
+    "tea",
+    "laptop"
+  ],
+  "one-tenth-roaster": [
+    "laptop",
+    "quiet"
+  ],
+  "niiice-yongjia": [
+    "outdoor",
+    "pet",
+    "quiet"
+  ],
+  "voyage-dongping": [
+    "quiet",
+    "laptop"
+  ],
+  "cypher-yueyang": [
+    "late",
+    "laptop"
+  ],
+  "cafe-du-dragon-longhua": [
+    "outdoor",
+    "quiet",
+    "tea"
+  ],
+  "day-dreaming-yongjia": [],
+  "eau-cafe-yongkang": [],
+  "pace-huashan": [
+    "outdoor"
+  ],
+  "geographer-shaanxi": [
+    "laptop",
+    "quiet"
+  ],
+  "in-dough-we-trust": [
+    "food"
+  ],
+  "tie-tianyaoqiao": [],
+  "rio-lab-fuxing": [],
+  "oz-cafe-maoming": [],
+  "coucou-paris-nanchang": [
+    "outdoor"
+  ],
+  "cafe-begonia-beihai": [],
+  "lets-coffee-huaihai": [],
+  "monster-kripy-huangpi": [],
+  "yris-south-bund": [
+    "view"
+  ],
+  "cafe-derien-jianguo-e": [
+    "pet"
+  ],
+  "flower-cafe-waitanyuan": [
+    "outdoor",
+    "view"
+  ],
+  "engine-huaihai": [],
+  "la-parisienne-bund": [
+    "view"
+  ],
+  "tamper-south-bund": [],
+  "malteh-dongjiadu": [],
+  "t-one-south-bund": [
+    "view",
+    "outdoor",
+    "laptop"
+  ],
+  "doe-xintiandi": [
+    "street",
+    "decaf",
+    "food",
+    "late"
+  ],
+  "creeper-luwan": [
+    "outdoor",
+    "tea",
+    "late"
+  ],
+  "gloria-jeans-huaihai": [
+    "food",
+    "late"
+  ],
+  "allday-brunch-bistro-yuyuanluzhenning": [
+    "food",
+    "late"
+  ],
+  "starbucks-osm-18": [
+    "late"
+  ],
+  "arabica-gubeidasha": [
+    "mall",
+    "takeaway",
+    "late"
+  ],
+  "coffee-yunwushan-rd-81": [
+    "late"
+  ],
+  "corbridge-garden-hongqiao-rd-1437": [
+    "late"
+  ],
+  "costa-coffee-shanghaiguomaozhongxin": [
+    "mall",
+    "late"
+  ],
+  "m-stand-shanghaibaishengyoukechengshiguangchang": [
+    "mall",
+    "takeaway",
+    "late"
+  ],
+  "manner-coffee-loushanguan-rd": [
+    "takeaway",
+    "late"
+  ],
+  "sun-cafe-bakery-xianxia-rd": [
+    "mall",
+    "late"
+  ],
+  "tim-hortons-osm-2": [
+    "late"
+  ],
+  "better-together-cafe-taian-rd-115": [
+    "food",
+    "late"
+  ],
+  "rumors-coffee-roastery-xingguo-rd": [
+    "food",
+    "late"
+  ],
+  "bluebottlecoffee-shangshengxinsuo": [
+    "late"
+  ],
+  "coffea-shed-zhangningquyanan-west-rd-1262": [
+    "late"
+  ],
+  "mimihuayuan-fahuazhen-rd": [
+    "food",
+    "late"
+  ],
+  "pine-tree-house-yangzhai-rd": [],
+  "starbucks-osm-43": [
+    "late"
+  ],
+  "1900loft-xinhua-rd": [
+    "food",
+    "late"
+  ],
+  "hudecgarden-xinhua-rd-272": [],
+  "kasir-xinhualushangying": [
+    "late"
+  ],
+  "koala-bar-cafe-zhangning": [
+    "late"
+  ],
+  "m2f-xinhua-rd": [
+    "food",
+    "late"
+  ],
+  "mocha-zhangningzhongxin": [],
+  "nowwa-nuowakafeiyuangong": [
+    "takeaway",
+    "late"
+  ],
+  "pincle-coffee-xinhua-rd-208": [],
+  "surry-hills-coffee-xinhua-rd-165": [
+    "late"
+  ],
+  "xingbake-xingfuli": [
+    "tea",
+    "food",
+    "late"
+  ],
+  "yichihuayuan-anhehuayuan": [
+    "food",
+    "late"
+  ],
+  "gregorius-yuyuan-rd-991": [],
+  "how-yuyuan-rd": [
+    "food",
+    "late"
+  ],
+  "sanyuekafeiguan-wanhangdu-rd-1384": [
+    "tea",
+    "food",
+    "late"
+  ],
+  "starbucks-osm-21": [
+    "late"
+  ],
+  "2nd-cup-coffee-cuiting": [],
+  "algebraist-shanghaishangjiazhongxin": [
+    "takeaway",
+    "late"
+  ],
+  "coffee-box-osm": [],
+  "komeda-s-coffee-yili-s-rd": [],
+  "luckin-coffee-osm-2": [
+    "takeaway",
+    "late"
+  ],
+  "souffle-xiruiguangchang": [
+    "mall",
+    "tea",
+    "food",
+    "late"
+  ],
+  "xiaoqiaozhikafeiguan-yananxilu1782nong1-4haoxiao": [
+    "street",
+    "food"
+  ],
+  "yizhangzhuozikafei-xinhongkoushizhengshangwulou": [
+    "street"
+  ],
+  "arabica-taiyanggong": [
+    "mall",
+    "takeaway",
+    "late"
+  ],
+  "85-c-bakery-cafe-osm-3": [
+    "street",
+    "food"
+  ],
+  "gongfeikafei-sichuanbeilushangye-st": [
+    "street",
+    "tea"
+  ],
+  "starbucks-osm-24": [
+    "street"
+  ],
+  "starbucks-osm-49": [
+    "street",
+    "late"
+  ],
+  "jiangyin-osm": [
+    "street"
+  ],
+  "kudikafei-hongkouhongchengge": [
+    "street",
+    "tea",
+    "decaf",
+    "takeaway",
+    "late"
+  ],
+  "manner-coffee-osm": [
+    "street",
+    "takeaway",
+    "late"
+  ],
+  "one-step-coffee-hepinggongyuan": [
+    "street"
+  ],
+  "peet-scoffee-kaidelongzhimenghongkou": [
+    "street",
+    "food",
+    "late"
+  ],
+  "starbucks-osm-3": [
+    "street"
+  ],
+  "starbucks-osm-45": [
+    "street",
+    "late"
+  ],
+  "yichihuayuan-luxungongyuan": [
+    "street"
+  ],
+  "algebraist-shanghaihongkouquyoubangjinrongzhongx": [
+    "mall",
+    "takeaway",
+    "late"
+  ],
+  "coffee-bar-zhongmeixintuojinrongdasha": [
+    "mall",
+    "late"
+  ],
+  "nowwa-hongjindasha": [
+    "mall",
+    "tea",
+    "decaf",
+    "takeaway"
+  ],
+  "starbucks-osm-9": [
+    "street",
+    "late"
+  ],
+  "starbucks-osm-52": [],
+  "flower-coffee-bar-ruitaili": [
+    "street"
+  ],
+  "baimakafeiguan-zhangyang-rd-67": [
+    "street"
+  ],
+  "costa-coffee-shanghairuifengguojidasha": [
+    "mall"
+  ],
+  "luckin-coffee-osm-3": [
+    "takeaway",
+    "late"
+  ],
+  "85c-bakery-cafe-osm": [
+    "food"
+  ],
+  "algebraist-zantingyingye": [
+    "mall",
+    "late"
+  ],
+  "starbucks-osm-36": [],
+  "le-labo-shanghaixintiandinanbeili": [
+    "street"
+  ],
+  "m-stand-dashanghaishidaiguangchang": [
+    "mall",
+    "takeaway",
+    "late"
+  ],
+  "pacific-coffee-osm-3": [],
+  "paopao-bakery-cafe-xintiandishishang": [
+    "food",
+    "late"
+  ],
+  "ruixingkafei-huaihaizhonghuadasha": [
+    "takeaway",
+    "tea",
+    "late"
+  ],
+  "w-caf-sh-the-beats-xintiandi": [
+    "street"
+  ],
+  "wutongkafei-fengyuli": [
+    "street"
+  ],
+  "xingbake-shanghaijinzhongguangchang": [
+    "mall"
+  ],
+  "blacksheep-espresso-maoming-s-rd-124": [
+    "street"
+  ],
+  "blacksheep-espresso-jianguo-middle-rd": [
+    "street"
+  ],
+  "cafe-on-air-huaihai-rd": [
+    "street"
+  ],
+  "coffee-ruijinyi-rd-179": [
+    "street"
+  ],
+  "dearyou-ruijiner-rd-50": [],
+  "demo-huaisanxiaoqu": [
+    "food",
+    "late"
+  ],
+  "flow-ruijiner-rd-69": [
+    "late"
+  ],
+  "liveliness-coffee-shop-peiwengongyu": [],
+  "nao-cafe-huaihai-middle-rd-700": [
+    "food",
+    "late"
+  ],
+  "niko-and-whole-775-restaurant-and-bar-huaihai755": [
+    "food",
+    "late"
+  ],
+  "pop-huaihai-rd": [
+    "late"
+  ],
+  "radar-coffee-si-s-rd": [],
+  "right-here-right-now-laochongqing-middle-rd-54": [],
+  "starbucks-osm-4": [
+    "late"
+  ],
+  "tribeca-ruijinerlujiedaonanchang-rd-98-1": [
+    "late"
+  ],
+  "tims-zhongquguangchang": [
+    "mall",
+    "food",
+    "late"
+  ],
+  "big-sur-coffee-mengzi-rd": [],
+  "lanwukafei-jumen-rd-468": [],
+  "lili-time-mengzi-east-rd-63": [
+    "food",
+    "late"
+  ],
+  "lostrip-uwan-shenghuozhongxin": [
+    "food",
+    "late"
+  ],
+  "starbucks-osm-42": [
+    "late"
+  ],
+  "starbucks-osm-47": [
+    "late"
+  ],
+  "always-coffee-roaster-jiujiang-rd-501": [],
+  "dugout-coffee-fuzhouluyuzhongshandongyilujiaocha": [
+    "late"
+  ],
+  "starbucks-osm-19": [],
+  "the-press-shenbaoguan": [
+    "food",
+    "tea",
+    "late"
+  ],
+  "arabica-yuyuan": [
+    "window",
+    "street"
+  ],
+  "alooooohavintage-lujiabang-rd-18": [
+    "mall"
+  ],
+  "dukoukongjian-lujiabang-rd-18": [
+    "mall"
+  ],
+  "jstone-italianbistro-waitan": [],
+  "starbucks-osm-16": [],
+  "starbucks-osm-39": [
+    "late"
+  ],
+  "starbucks-osm-44": [],
+  "ask-xinjinqiaoguangchang": [],
+  "baoluosikafei-yuedahuangpuhebindasha": [
+    "food",
+    "mall"
+  ],
+  "geographer-guling-rd": [
+    "mall"
+  ],
+  "mikaku-mini": [
+    "food",
+    "tea",
+    "laptop",
+    "quiet"
+  ],
+  "omnibus-coffee-ningbo-rd-620": [],
+  "wuyukafeidian-yunnan-n-rd-18": [],
+  "benshikafei-luoke-waitanyuan": [],
+  "donghaikafeiguan-dianchi-rd-110": [
+    "food",
+    "tea",
+    "late"
+  ],
+  "ideapod-reserved-huqiu-rd-78": [
+    "laptop",
+    "quiet",
+    "late"
+  ],
+  "kukoukafei-luoke-waitanyuan": [],
+  "mozzarella-e-vino-luokewaitanyuan": [
+    "food",
+    "tea"
+  ],
+  "naive-coffee-bar-waitanjiedaoluokewaitanyuanhuqi": [],
+  "starbucks-osm-50": [],
+  "miracle-coffee-shanghaihubindao": [],
+  "starbucks-osm-28": [],
+  "cunkoudashu-changlelu366nongxiaoqu": [],
+  "huayuanfandianmeiguikafeiting-maoming-s-rd": [
+    "food"
+  ],
+  "onirii-coffee-nomi-bar-changle-rd-366": [],
+  "tieshoukafeizhizaoju-metalhands2": [],
+  "antique-si-s-rd-44": [],
+  "give-take-waima-rd": [
+    "takeaway"
+  ],
+  "algebraist-shanghaizhongxintaifuguangchang": [
+    "mall",
+    "late"
+  ],
+  "oaks-19-nanyang-rd-72-1": [],
+  "basdban-yuyuanlucanting": [
+    "food"
+  ],
+  "bashidebankafei-yuyuan-rd": [],
+  "kandedaofengjingdekafeiguan-jingan": [],
+  "kuddo-coffee-yongyuan-rd": [],
+  "lagom-cafe-bar-jinganxingzuo": [],
+  "luckydraw-beijing-west-rd-1622": [],
+  "xiongxuankafeixiaozhongshudian-anyuan-rd-125": [],
+  "m-stand-shanghaidaningguoji": [
+    "street",
+    "late"
+  ],
+  "nana-coffee-daning": [],
+  "we-lucky-coffee-jingan": [
+    "late"
+  ],
+  "1925-baoshan-rd-403": [],
+  "starbucks-osm-22": [],
+  "wujiakafei-shanghaixinhu-qinglanguoji": [
+    "food"
+  ],
+  "fumi-coffee-shankangli": [],
+  "moofin-jiangning-rd": [
+    "tea",
+    "decaf"
+  ],
+  "chu-roastery-osm": [],
+  "costa-coffee-jingandarongcheng": [
+    "mall",
+    "late"
+  ],
+  "manner-coffee-jingandarongcheng": [
+    "mall",
+    "takeaway",
+    "late"
+  ],
+  "peet-s-jingandarongcheng": [
+    "mall",
+    "late",
+    "food",
+    "tea",
+    "decaf"
+  ],
+  "starbucks-osm-2": [],
+  "starbucks-osm-14": [
+    "late"
+  ],
+  "tim-hortons-osm-4": [],
+  "happiness-changle-rd-514": [],
+  "luckin-coffee-osm-4": [
+    "takeaway",
+    "late"
+  ],
+  "plusone-julululanding": [
+    "food"
+  ],
+  "shanghaipaikafei-huashan-rd": [],
+  "slab-town-fumin-rd-210": [],
+  "the-oranges-fumin-rd-183": [],
+  "1691cafebar-fengxian-rd-218": [],
+  "blue-bottle-coffee-zhangyuan": [
+    "mall"
+  ],
+  "bobac-coffee-jingongguanshanxibeiluhuayuanzhuzha": [],
+  "book-a-coffee-nanhui-rd": [
+    "food",
+    "late"
+  ],
+  "coffeespot-beijingxilu838nong2haoxiaoqu": [],
+  "deck-coffee-taproom-jingansi": [],
+  "huffy-coffee-gelato-weihai-rd-844": [
+    "late"
+  ],
+  "starbucks-osm-29": [],
+  "wooden-spoon-cafe-fengxian-rd": [],
+  "yichihuayuan-jinganhuafang": [
+    "food",
+    "late"
+  ],
+  "yuenanzhongyuanchuanqikafei-nanjing-west-rd": [
+    "food",
+    "late"
+  ],
+  "3637space-huaqiaochengsuhewanxingzhenggongguan2q": [],
+  "komma-coffee-xianjiansuhewan": [],
+  "starbucks-osm-41": [],
+  "nowwa-moling-rd-100": [
+    "takeaway",
+    "late"
+  ],
+  "taipingyangkafei-shanghaizhan": [
+    "mall",
+    "late"
+  ],
+  "tim-hortons-osm": [],
+  "asap-coffee-beisuzhouhe-rd": [],
+  "akadama-coffee-bar-wuding-west-rd-1194": [],
+  "can-company-yanpingshequ": [],
+  "coffeegroupies-kangding-rd-723": [],
+  "d-orino-coffee-kangding-rd-833": [],
+  "dehomecoffee-jiaozhou-rd": [],
+  "dia-coffee-shanghaishishanghaishijinganqu": [],
+  "grandyard-cafe-and-bar-xikang-rd-608": [
+    "food"
+  ],
+  "wagas-osm-2": [
+    "food"
+  ],
+  "costa-osm": [],
+  "drops-huashan-rd-376": [],
+  "gentlemaker-cafe-huashan-rd-748": [],
+  "jaycafe-zhenliugongyu": [],
+  "blue-bottle-coffee-jinganjializhongxin": [
+    "mall",
+    "late"
+  ],
+  "doe-tongren-rd": [
+    "street",
+    "late"
+  ],
+  "paddy-lab-wanhangdu-rd-889": [
+    "mall",
+    "late"
+  ],
+  "kudikafei-pudongchangli-rd": [
+    "street",
+    "takeaway",
+    "late"
+  ],
+  "starbucks-osm-12": [
+    "late"
+  ],
+  "starbucks-osm-25": [
+    "late"
+  ],
+  "starbucks-osm-37": [
+    "late"
+  ],
+  "yichihuayuan-shibowenhuagongyuan": [],
+  "coffee-cube-lujiazuihuan-rd-717": [
+    "view",
+    "outdoor",
+    "late"
+  ],
+  "starbucks-osm-31": [
+    "late"
+  ],
+  "xingbakekafei-shanghaizhongguorenshoujinrongzhon": [
+    "mall",
+    "late"
+  ],
+  "85-c-bakery-cafe-osm": [],
+  "85-c-bakery-cafe-osm-2": [],
+  "coffee-masters-osm": [],
+  "luckin-coffee-osm": [
+    "takeaway",
+    "late"
+  ],
+  "luckin-coffee-mutianshangyeguangchang": [
+    "mall",
+    "tea",
+    "takeaway",
+    "late"
+  ],
+  "luckincoffee-xiepuluyuchangyilujiaochakouxibei14": [
+    "takeaway"
+  ],
+  "m-stand-osm": [
+    "takeaway"
+  ],
+  "manner-coffee-osm-2": [
+    "takeaway"
+  ],
+  "manner-coffee-lujiazuibinjiangzhongxin": [
+    "takeaway"
+  ],
+  "manner-coffee-sanchenlishenghuozhongxin": [
+    "takeaway"
+  ],
+  "starbucks-osm": [
+    "late"
+  ],
+  "starbucks-osm-10": [],
+  "starbucks-osm-11": [],
+  "starbucks-osm-13": [],
+  "starbucks-osm-23": [],
+  "starbucks-osm-46": [],
+  "tim-hortons-osm-3": [],
+  "tims-topxinlian": [],
+  "yichihuayuan-shijigongyuan": [
+    "outdoor",
+    "quiet"
+  ],
+  "youlankafei-shanghaishibo": [],
+  "yuanqingtengkafeironghecai-dongfang-rd-2111": [],
+  "as-garden-cafe-lujiazuifucheng-rd-199": [
+    "mall"
+  ],
+  "xinn-coffee-etc-rongzhitiandi": [
+    "mall"
+  ],
+  "costa-coffee-zantingyingye": [
+    "mall"
+  ],
+  "heijiaojiuba-baitiankafei": [],
+  "komeda-s-coffee-jinyan-rd-155": [],
+  "lb-coffee-qijian": [],
+  "starbucks-osm-27": [],
+  "starbucks-osm-38": [],
+  "chili-s-cafe-bar-binjiang": [
+    "food",
+    "late"
+  ],
+  "j-meet-binjiang-ave-2727": [
+    "food",
+    "late"
+  ],
+  "starbucks-osm-34": [],
+  "blatage-coffee-binjiang-ave-4594": [],
+  "geographer-shangchangshijihuiguangchang": [
+    "mall"
+  ],
+  "kudikafei-laoshan-rd": [
+    "takeaway",
+    "late"
+  ],
+  "m-stand-shanghaihuamushiguangli": [
+    "takeaway",
+    "late"
+  ],
+  "mrs-bunny-brunch-bistro-binjiang": [
+    "food",
+    "late"
+  ],
+  "nowwa-shanghaiyuanshentiyuzhongxin": [
+    "takeaway"
+  ],
+  "peet-s-coffee-bailianshiji": [
+    "food",
+    "late"
+  ],
+  "soundcafe-binjiang-ave-4598": [],
+  "starbucks-osm-7": [],
+  "starbucks-osm-35": [],
+  "starbucks-osm-40": [],
+  "stop-coffee-fushan-rd": [],
+  "tims-pingancaifudasha": [
+    "mall"
+  ],
+  "xingbake-huamushiguangli": [
+    "mall"
+  ],
+  "coffee-zhongshan-n-rd": [],
+  "hana-coffee-changshouyuan": [],
+  "sorrydog-guangfu-west-rd-165": [],
+  "starbucks-osm-6": [
+    "late"
+  ],
+  "starbucks-osm-30": [
+    "late"
+  ],
+  "starbucks-osm-48": [],
+  "starbucks-coffee-osm": [
+    "late"
+  ],
+  "tangduokafei-caoyangyingcheng": [
+    "food"
+  ],
+  "xiaoshiguangkafeiguan-changshou-rd": [],
+  "xingbake-shanghaiyuexinghuanqiugang": [
+    "mall",
+    "food"
+  ],
+  "pacific-coffee-osm-2": [],
+  "arabica-dayangqianshu": [
+    "takeaway"
+  ],
+  "gushukafei-wanli": [
+    "mall"
+  ],
+  "kudikafei-putuoxingguangyaoguangchang": [
+    "mall",
+    "tea",
+    "decaf",
+    "food",
+    "late"
+  ],
+  "ruixingkafei-fuping-rd": [
+    "street",
+    "tea",
+    "decaf",
+    "food",
+    "late"
+  ],
+  "tims-beishiluyunandajiejiaochakouxi100mi": [
+    "street"
+  ],
+  "wagas-osm": [],
+  "xingyunka-huadongshifandaxue": [
+    "street",
+    "decaf",
+    "food",
+    "late"
+  ],
+  "ouzhixinkafei-dahuaqingshuiwanhuayuan": [
+    "street",
+    "tea",
+    "decaf",
+    "food",
+    "late"
+  ],
+  "brick-lane-wunan": [
+    "street"
+  ],
+  "cafe-di-wine-wukangdalou": [
+    "street",
+    "food",
+    "late"
+  ],
+  "coffee-is-xiangyang-s-rd": [
+    "street",
+    "food",
+    "late"
+  ],
+  "coffeedealer-jianguo-west-rd": [
+    "street",
+    "food",
+    "late"
+  ],
+  "dongyingzaoxing-huijinbaihuo": [
+    "street"
+  ],
+  "hey-barista-hengshan-rd-880": [
+    "street"
+  ],
+  "kiosk-coffee-taiyuan-rd-283-1": [
+    "street",
+    "food",
+    "late"
+  ],
+  "midiankafeiguan-pingjiang-rd-115": [
+    "street"
+  ],
+  "mozzarella-e-vino-hengshan-rd": [
+    "street",
+    "food",
+    "late"
+  ],
+  "niuxiangkafei-jinhebalishiyun": [
+    "street"
+  ],
+  "sanyouerfenzhiyi-taiyuan-rd-305": [
+    "street",
+    "food",
+    "late"
+  ],
+  "starbucks-osm-20": [],
+  "starbucks-osm-33": [],
+  "waveoffcoffee-jianguo-west-rd-550": [
+    "street"
+  ],
+  "xidaduokafeigongzuoshi-jianguo-west-rd-395": [],
+  "cafe-bistro-changshu-rd-201": [
+    "late"
+  ],
+  "esc-coffee-changshu-rd-159-2": [],
+  "garden-books-changle": [
+    "late"
+  ],
+  "goodbai-cafe-yanqing-rd-104": [
+    "decaf"
+  ],
+  "gregorius-shade-anfu-rd-53": [],
+  "here-cafe-lounge-xiangyangdalou": [
+    "food"
+  ],
+  "peet-s-donghulushouzuo": [
+    "tea",
+    "food",
+    "late"
+  ],
+  "plan-b-xiangyang-n-rd": [
+    "mall"
+  ],
+  "sunset-ab-yanqinglu54nongxiaoqu": [
+    "tea"
+  ],
+  "ws-cafe-lounge-huaihai-middle-rd-1298": [],
+  "yichihuayuan-xiangzhanghuayuan": [
+    "food",
+    "late"
+  ],
+  "arabica-xianjinrongcheng": [
+    "takeaway"
+  ],
+  "cafe-society-shanghaiwanhaoting": [
+    "late"
+  ],
+  "manner-coffee-xuhuibinjiang": [
+    "takeaway"
+  ],
+  "qiaokafei-xian": [
+    "late"
+  ],
+  "w-caf-sh-brunch-bistro-xianzhonghuan": [
+    "food",
+    "late"
+  ],
+  "dongjingkafei-wuyuan-rd-86": [],
+  "faust-tianping-rd-216": [],
+  "jamaica-blue-wulumuqi-middle-rd": [
+    "food",
+    "tea",
+    "late"
+  ],
+  "laomaikafeiguan-wukang-rd": [
+    "street",
+    "food",
+    "late"
+  ],
+  "likelikeslike-coffee-tianping-rd-238": [
+    "street"
+  ],
+  "lumazikafei-zhongnanxincun": [
+    "street",
+    "food"
+  ],
+  "ortensia-cafe-taian-rd": [
+    "street",
+    "food",
+    "late"
+  ],
+  "overlaps-cafe-bistro-hengshan-rd-8": [
+    "street",
+    "food",
+    "late",
+    "outdoor"
+  ],
+  "p-m-cafe-wuyuan-rd": [
+    "street",
+    "food"
+  ],
+  "plusone-coffee-anfu-rd-156": [
+    "street"
+  ],
+  "shanghailander-wuyuan-rd-92": [
+    "street"
+  ],
+  "shimmer-wulumuqi-middle-rd": [
+    "street"
+  ],
+  "dreaming-shanghai-hongqiao-rd-808": [
+    "mall",
+    "food",
+    "late"
+  ],
+  "starbucks-osm-8": [
+    "street"
+  ],
+  "burger-king-cafe-osm": [
+    "street"
+  ],
+  "kudikafei-fenglinkechuangyuanc5": [
+    "takeaway",
+    "decaf",
+    "tea"
+  ],
+  "nowwa-shanghaixuhuitianlin-east-rd": [
+    "takeaway",
+    "decaf",
+    "tea"
+  ],
+  "pacific-coffee-osm": [
+    "street"
+  ],
+  "ruixingkafei-kejichanyehuadalou": [
+    "takeaway",
+    "decaf",
+    "tea"
+  ],
+  "starbucks-osm-5": [
+    "street"
+  ],
+  "starbucks-osm-15": [
+    "street"
+  ],
+  "tims-shanghaiyaojizongbudatang": [
+    "mall"
+  ],
+  "algebraist-shanghaixuhuiqudongfangshangsha": [
+    "takeaway",
+    "decaf",
+    "tea"
+  ],
+  "haw-side-coffee-zhongshannaner-rd-2031-4": [],
+  "huijiazhuoyoujubenkafeiguan-wantiguanqijian": [],
+  "ikea-cafe-yijiajiaju": [
+    "mall"
+  ],
+  "m-stand-shanghaibaolishiguangli": [
+    "mall",
+    "takeaway",
+    "late"
+  ],
+  "metal-hands-nandan-rd-15": [
+    "food"
+  ],
+  "oaoa-all-day-chill-xujiahuijiedaoyude-rd-20": [
+    "late"
+  ],
+  "peet-s-coffee-longhuahui": [
+    "food",
+    "tea",
+    "late"
+  ],
+  "shonen-jump-cafe-zhaojiabang-rd-1111": [],
+  "starbucks-osm-17": [],
+  "starbucks-osm-26": [],
+  "starbucks-osm-51": [],
+  "tixiangyanmokafei-wanping-s-rd-263": [
+    "food",
+    "late"
+  ],
+  "a-calling-yongfudisanxiaoqu": [],
+  "aloha-coffee-xiangyang-s-rd": [],
+  "bathe-coffee-yongkangxiaoqubeiqu": [],
+  "big-sur-coffee-yongjia-rd": [],
+  "cafe-del-volcan-yongkang-rd-80": [],
+  "captaingeorge-taiyuan-rd-236": [],
+  "coplusde-xiangyang-s-rd": [
+    "tea",
+    "late"
+  ],
+  "costa-osm-2": [],
+  "costa-coffee-shanghaimeiyuehua": [
+    "street",
+    "food",
+    "tea",
+    "decaf"
+  ],
+  "daxiaolekafeishangdian-shanxinanlu488nongxiaoqu": [
+    "street"
+  ],
+  "daydreaming-cafe-xiangyang-rd": [
+    "street",
+    "food"
+  ],
+  "dou-coffee-roasters-shenchengli": [
+    "street"
+  ],
+  "give-take-yongkang-rd": [
+    "street"
+  ],
+  "honky-tonk-coffee-xiangyang-s-rd-262": [
+    "street"
+  ],
+  "jenny-s-bar-guinness-donghu-rd-7": [
+    "street"
+  ],
+  "jiuzhimaoxiaojielumaoguanmaomishoumai-mingyuansh": [
+    "mall",
+    "pet",
+    "late"
+  ],
+  "leimi-yongkang-rd-88": [
+    "street",
+    "food"
+  ],
+  "metal-hands-xiangyang-s-rd": [
+    "street"
+  ],
+  "starbucks-osm-32": [
+    "street"
+  ],
+  "tequila-espresso-jiashan-rd-55": [
+    "street",
+    "food"
+  ],
+  "texienanzhanxianxiatiyankongjian-huaihaizhonglus": [
+    "street",
+    "laptop",
+    "quiet"
+  ]
+}
