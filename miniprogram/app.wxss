@@ -1,0 +1,16 @@
+page {
+  --paper: #f3e9dc;
+  --ink: #4a2f1f;
+  --faded: #a1846c;
+  --accent: #8a5a33;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Noto Sans SC", "PingFang SC", sans-serif;
+}
+
+page,
+view,
+text,
+image {
+  box-sizing: border-box;
+}

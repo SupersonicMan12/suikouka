@@ -1,0 +1,253 @@
+.stage {
+  min-height: 100vh;
+  padding: 64rpx 48rpx calc(64rpx + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36rpx;
+  text-align: center;
+  color: var(--ink);
+  user-select: none;
+}
+
+.mark {
+  color: var(--ink);
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: 128rpx;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+}
+
+.mark.small {
+  font-size: 76rpx;
+}
+
+.breathing {
+  animation: breathe 2.2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1.04); }
+}
+
+.tagline {
+  max-width: 650rpx;
+  color: var(--ink);
+  font-size: 34rpx;
+  line-height: 1.7;
+}
+
+.tagline.live {
+  min-height: 116rpx;
+  font-style: italic;
+}
+
+.hint,
+.notice {
+  max-width: 620rpx;
+  color: var(--faded);
+  font-size: 28rpx;
+  line-height: 1.7;
+}
+
+.notice {
+  color: var(--accent);
+}
+
+.slide {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.ordinal {
+  color: var(--faded);
+  font-size: 26rpx;
+  letter-spacing: 0.35em;
+}
+
+.photo-block {
+  width: 100%;
+  max-height: 38vh;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--paper);
+  border-radius: 28rpx;
+  padding: 10rpx;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px rgba(74, 47, 31, 0.16);
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 18rpx;
+  filter: sepia(.35) contrast(.95);
+}
+
+.cup {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cup-body {
+  position: absolute;
+  left: 30%;
+  top: 36%;
+  width: 38%;
+  height: 36%;
+  border: 4rpx solid var(--faded);
+  border-radius: 0 0 50% 50%;
+}
+
+.cup-handle {
+  position: absolute;
+  left: 67%;
+  top: 43%;
+  width: 14%;
+  height: 18%;
+  border: 4rpx solid var(--faded);
+  border-left: 0;
+  border-radius: 0 50% 50% 0;
+}
+
+.cup::after {
+  content: "";
+  position: absolute;
+  left: 27%;
+  top: 75%;
+  width: 48%;
+  border-bottom: 4rpx solid var(--faded);
+}
+
+.steam {
+  position: absolute;
+  top: 22%;
+  width: 4rpx;
+  height: 15%;
+  border-left: 4rpx solid var(--faded);
+  border-radius: 50%;
+  transform: rotate(18deg);
+}
+
+.steam.one { left: 43%; }
+.steam.two { left: 55%; }
+
+.cafe-name {
+  color: var(--ink);
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: 64rpx;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.cafe-sub {
+  color: var(--faded);
+  font-size: 28rpx;
+}
+
+.reason {
+  color: var(--ink);
+  font-size: 32rpx;
+  line-height: 1.7;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 22rpx;
+  color: var(--ink);
+  font-size: 25rpx;
+}
+
+.facts text {
+  border-bottom: 4rpx solid var(--accent);
+  padding-bottom: 4rpx;
+}
+
+.busy {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12rpx;
+  color: var(--ink);
+  font-size: 26rpx;
+}
+
+.busy-meter {
+  display: flex;
+  gap: 8rpx;
+}
+
+.dot {
+  width: 14rpx;
+  height: 14rpx;
+  border: 2rpx solid var(--accent);
+  border-radius: 50%;
+}
+
+.dot.filled {
+  background: var(--accent);
+}
+
+.busy-note {
+  color: var(--faded);
+  font-size: 22rpx;
+}
+
+.tag-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10rpx;
+}
+
+.tag-pills text {
+  padding: 6rpx 16rpx;
+  border: 2rpx solid rgba(138, 90, 51, .55);
+  border-radius: 999rpx;
+  color: var(--accent);
+  font-size: 22rpx;
+}
+
+.dishes {
+  max-width: 100%;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 25rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.street {
+  color: var(--faded);
+  font-size: 26rpx;
+}
+
+.dots {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 10rpx;
+}
+
+.dots text {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: var(--faded);
+  opacity: .4;
+}
+
+.dots text.on {
+  background: var(--accent);
+  opacity: 1;
+}

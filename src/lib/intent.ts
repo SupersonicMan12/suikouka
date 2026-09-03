@@ -22,6 +22,13 @@ interface Rule {
   heard: { en: string; zh: string }
 }
 
+export interface RelayIntentPayload {
+  axes?: Partial<Record<keyof Axes, number>>
+  maxPrice?: 1 | 2 | 3
+  heard?: { en: string; zh: string }[]
+  complete?: boolean
+}
+
 const RULES: Rule[] = [
   {
     cues: ['工作', '办公', '加班', '学习', '写作业', '复习', '备考', '码字', '写代码', 'work', 'study', 'laptop', 'focus', 'deadline', 'writing'],
@@ -112,6 +119,31 @@ export function parseIntent(transcript: string): Intent {
 export function weightsFor(touched: ReadonlySet<keyof Axes>): Weights {
   const w = (k: keyof Axes) => (touched.has(k) ? 2 : 0.6)
   return { focus: w('focus'), energy: w('energy'), linger: w('linger'), adventure: w('adventure'), spend: w('spend') }
+}
+
+const AXIS_KEYS: (keyof Axes)[] = ['focus', 'energy', 'linger', 'adventure', 'spend']
+
+export function intentFromRelayPayload(payload: unknown, transcript: string): Intent {
+  const fallback = parseIntent(transcript)
+  if (!payload || typeof payload !== 'object') return fallback
+  const data = payload as RelayIntentPayload
+  if (!data.axes || Object.keys(data.axes).length === 0) return fallback
+  const axes: Axes = { ...NEUTRAL }
+  const touched = new Set<keyof Axes>()
+  for (const k of AXIS_KEYS) {
+    const v = data.axes[k]
+    if (typeof v === 'number' && v >= 0 && v <= 100) {
+      axes[k] = Math.round(v)
+      touched.add(k)
+    }
+  }
+  if (touched.size === 0) return fallback
+  const filters: Filters = { ...EMPTY_FILTERS, openAt: currentHour() }
+  if (data.maxPrice === 1 || data.maxPrice === 2 || data.maxPrice === 3) filters.maxPrice = data.maxPrice
+  const heard = Array.isArray(data.heard)
+    ? data.heard.filter((h) => typeof h?.en === 'string' && typeof h?.zh === 'string').slice(0, 4)
+    : fallback.heard
+  return { axes, weights: weightsFor(touched), filters, heard, complete: data.complete !== false }
 }
 
 export function currentHour(): number {

@@ -1,0 +1,9 @@
+{
+  "appid": "touristappid",
+  "projectname": "suikouka",
+  "setting": {
+    "es6": true,
+    "minified": true,
+    "urlCheck": false
+  }
+}

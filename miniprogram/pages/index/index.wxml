@@ -1,0 +1,67 @@
+<view class="stage {{stage}}" bindtap="onStageTap">
+  <block wx:if="{{stage === 'idle'}}">
+    <view class="mark">随口咖</view>
+    <text class="tagline">点一下，随口说说你的场合和需求</text>
+    <text class="hint">我想找个安静的地方工作两小时，别太贵</text>
+  </block>
+
+  <block wx:elif="{{stage === 'listening'}}">
+    <view class="mark breathing">随口咖</view>
+    <text class="tagline live">{{interim || '在听……'}}</text>
+    <text class="hint">说完停一下，我就开始找</text>
+    <text wx:if="{{notice}}" class="notice">{{notice}}</text>
+  </block>
+
+  <block wx:elif="{{stage === 'thinking'}}">
+    <view class="mark">随口咖</view>
+    <text class="tagline">{{interim}}</text>
+    <text class="hint">想想看……</text>
+  </block>
+
+  <block wx:elif="{{stage === 'deck'}}">
+    <block wx:for="{{cards}}" wx:key="id">
+      <block wx:if="{{index === slide}}">
+        <view class="slide">
+        <text class="ordinal">{{item.ordinal}}</text>
+        <view class="photo-block">
+          <image wx:if="{{item.photo}}" class="photo" mode="aspectFill" lazy-load src="{{item.photo}}" />
+          <view wx:else class="cup" aria-label="咖啡杯占位"><view class="steam one"></view><view class="steam two"></view><view class="cup-body"></view><view class="cup-handle"></view></view>
+        </view>
+        <text class="cafe-name">{{item.name}}</text>
+        <text wx:if="{{item.originalName}}" class="cafe-sub">{{item.originalName}}</text>
+        <text wx:if="{{item.blurb}}" class="reason">{{item.blurb}}</text>
+        <view class="facts">
+          <text>步行 {{item.minutes}} 分钟</text>
+          <text>{{item.price}}</text>
+          <text>开到 {{item.closing}}</text>
+          <text wx:if="{{item.tables}}">约 {{item.tables}} 桌</text>
+        </view>
+        <view wx:if="{{item.busyLabel}}" class="busy">
+          <text>{{item.busyLabel}}</text>
+          <view class="busy-meter">
+            <text wx:for="{{meterDots}}" wx:key="*this" class="dot {{index <= item.busyLevel ? 'filled' : ''}}"></text>
+          </view>
+          <text class="busy-note">{{item.busyNote}}</text>
+        </view>
+        <view wx:if="{{item.tags.length}}" class="tag-pills">
+          <text wx:for="{{item.tags}}" wx:key="*this">{{item}}</text>
+        </view>
+        <text wx:if="{{item.dishText}}" class="dishes">推荐：{{item.dishText}}</text>
+        <text class="street">{{item.street}}</text>
+        <view class="dots">
+          <text wx:for="{{cards}}" wx:key="id" class="{{index === slide ? 'on' : ''}}"></text>
+        </view>
+        </view>
+      </block>
+    </block>
+  </block>
+
+  <block wx:elif="{{stage === 'done'}}">
+    <view class="mark small">随口咖</view>
+    <text class="tagline">点一下，再说一句</text>
+    <text class="hint">说「换一批」看下三家</text>
+    <text class="hint">说「导航第二家」可以直接去</text>
+  </block>
+
+  <text wx:if="{{notice && stage !== 'listening'}}" class="notice">{{notice}}</text>
+</view>

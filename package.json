@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "test": "npx tsx tools/test-busy.mjs",
+    "build:mp": "node tools/build-miniprogram.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
