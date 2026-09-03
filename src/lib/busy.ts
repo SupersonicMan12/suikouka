@@ -74,7 +74,7 @@ export function estimateBusy(cafe: Cafe, detail: Detail, now: Date): BusyEstimat
   }
   const popularity = detail.popularity ?? 0.4
   const capacity = cafe.seats > 0 ? (cafe.seats <= 15 ? 1.3 : cafe.seats <= 40 ? 1 : 0.8) : 1
-  const score = base * ramp * (0.6 + 0.8 * popularity) / capacity
+  const score = base * (0.6 + 0.8 * popularity) / capacity
   const level: 0 | 1 | 2 = score < 0.45 ? 0 : score < 0.8 ? 1 : 2
   const label = level === 0 ? '空' : level === 1 ? '适中' : '挤'
   return { level, label, note: `预估 · ${noteRule}` }
