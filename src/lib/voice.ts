@@ -41,6 +41,7 @@ export function listenOnce(
   onInterim: (text: string) => void,
   onFinal: (text: string) => void,
   onError: (error: string) => void,
+  onActivity?: () => void,
 ): ListenHandle {
   const w = window as unknown as RecognitionWindow
   const Ctor = w.SpeechRecognition ?? w.webkitSpeechRecognition
@@ -50,27 +51,69 @@ export function listenOnce(
   }
   const rec = new Ctor()
   rec.lang = lang
-  rec.continuous = false
+  rec.continuous = true
   rec.interimResults = true
   let final = ''
+  let interim = ''
+  let heardResult = false
+  let settled = false
+  let silenceTimer: ReturnType<typeof setTimeout> | undefined
+  const settle = (error?: string) => {
+    if (settled) return
+    settled = true
+    if (silenceTimer) clearTimeout(silenceTimer)
+    rec.stop()
+    const transcript = `${final}${interim}`.trim()
+    if (transcript) onFinal(transcript)
+    else onError(error ?? 'no-speech')
+  }
+  const armSilence = () => {
+    if (silenceTimer) clearTimeout(silenceTimer)
+    silenceTimer = setTimeout(() => settle(), 1300)
+  }
+  const noSpeechTimer = setTimeout(() => {
+    if (!heardResult) settle('no-speech')
+  }, 6000)
+  const hardCapTimer = setTimeout(() => settle(), 15000)
   rec.onresult = (e) => {
-    let interim = ''
+    heardResult = true
+    onActivity?.()
+    interim = ''
     for (let i = e.resultIndex; i < e.results.length; i++) {
       const r = e.results[i]
       if (r.isFinal) final += r[0].transcript
       else interim += r[0].transcript
     }
-    if (interim) onInterim(interim)
+    onInterim(`${final}${interim}`.trim())
+    armSilence()
   }
   rec.onend = () => {
-    if (final.trim()) onFinal(final.trim())
-    else onError('no-speech')
+    clearTimeout(noSpeechTimer)
+    clearTimeout(hardCapTimer)
+    if (!settled) {
+      settled = true
+      if (silenceTimer) clearTimeout(silenceTimer)
+      const transcript = `${final}${interim}`.trim()
+      if (transcript) onFinal(transcript)
+      else onError('no-speech')
+    }
   }
   rec.onerror = (e) => {
+    clearTimeout(noSpeechTimer)
+    clearTimeout(hardCapTimer)
     if (e.error !== 'aborted' && e.error !== 'no-speech') onError(e.error)
   }
   rec.start()
-  return { stop: () => rec.abort() }
+  return {
+    stop: () => {
+      if (settled) return
+      settled = true
+      clearTimeout(noSpeechTimer)
+      clearTimeout(hardCapTimer)
+      if (silenceTimer) clearTimeout(silenceTimer)
+      rec.abort()
+    },
+  }
 }
 
 let voiceCache: SpeechSynthesisVoice | null | undefined

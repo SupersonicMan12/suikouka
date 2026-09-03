@@ -17,6 +17,7 @@ interface QwenIntentPayload {
   axes?: Partial<Record<keyof Axes, number>>
   maxPrice?: 1 | 2 | 3
   heard?: { en: string; zh: string }[]
+  complete?: boolean
 }
 
 const AXIS_KEYS: (keyof Axes)[] = ['focus', 'energy', 'linger', 'adventure', 'spend']
@@ -63,7 +64,7 @@ export async function parseWithQwen(transcript: string, timeoutMs = 3500): Promi
       ? data.heard.filter((h) => typeof h?.en === 'string' && typeof h?.zh === 'string').slice(0, 4)
       : fallback.heard
 
-    return { axes, weights, filters, heard }
+    return { axes, weights, filters, heard, complete: data.complete !== false }
   } catch {
     return fallback
   }

@@ -9,6 +9,7 @@ export interface Intent {
   axes: Axes
   weights: Weights
   filters: Filters
+  complete: boolean
   /** Human-readable echo of what was understood, for the confirmation line. */
   heard: { en: string; zh: string }[]
 }
@@ -105,7 +106,7 @@ export function parseIntent(transcript: string): Intent {
 
   const weights = weightsFor(touched)
 
-  return { axes, weights, filters, heard }
+  return { axes, weights, filters, heard, complete: true }
 }
 
 export function weightsFor(touched: ReadonlySet<keyof Axes>): Weights {
@@ -124,4 +125,15 @@ export function isMoreCommand(transcript: string): boolean {
   return ['换一批', '换一换', '再来', '下一批', '还有吗', 'next', 'more', 'others', 'another'].some((c) =>
     t.includes(c),
   )
+}
+
+export function navCommand(text: string): 0 | 1 | 2 | null {
+  const t = text.toLowerCase()
+  if (!/(导航|带我去|怎么走)/.test(t)) return null
+  const match = t.match(/(第一|第二|第三|一|二|三)家?/)
+  if (!match) return null
+  const ordinal = match[1]
+  if (ordinal === '第一' || ordinal === '一') return 0
+  if (ordinal === '第二' || ordinal === '二') return 1
+  return 2
 }
