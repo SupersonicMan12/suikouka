@@ -20,14 +20,29 @@ type Stage = 'idle' | 'listening' | 'thinking' | 'deck' | 'unsupported'
 const SPEECH_LANG = 'zh-CN'
 
 const ORDINALS_ZH = ['第一家', '第二家', '第三家']
+const GENERIC_SIGNATURES = new Set([
+  'Flat white, no fuss',
+  'Espresso at the counter',
+  'House-roasted pour-over',
+  'Rotating brew bar',
+  'Coffee and something from the oven',
+])
+const TAG_ORDER = ['mall', 'street', 'takeaway', 'view', 'window', 'outdoor', 'tea', 'decaf', 'food', 'laptop', 'quiet', 'pet', 'late'] as const
 
-function signatureZh(c: Cafe): string {
-  return SIGNATURES_ZH[c.id] ?? c.signature
+function blurb(c: Cafe, detail: Detail): string {
+  if (!GENERIC_SIGNATURES.has(c.signature)) return SIGNATURES_ZH[c.id] ?? c.signature
+  if (detail.dishes.length > 0) return `推荐 ${detail.dishes.slice(0, 2).join('、')}`
+  return [...detail.tags]
+    .sort((a, b) => TAG_ORDER.indexOf(a) - TAG_ORDER.indexOf(b))
+    .slice(0, 2)
+    .map((tag) => TAG_LABELS[tag])
+    .join(' · ')
 }
 
-function narration(r: NearRanked, i: number): string {
+function narration(r: NearRanked, i: number, detail: Detail): string {
   const c = r.cafe
-  return `${ORDINALS_ZH[i]}，${c.nameZh || c.name}，步行${r.minutes}分钟，${signatureZh(c)}。`
+  const reason = blurb(c, detail)
+  return `${ORDINALS_ZH[i]}，${c.nameZh || c.name}，步行${r.minutes}分钟${reason ? `，${reason}` : ''}。`
 }
 
 function priceMarks(p: Cafe['price']): string {
@@ -44,8 +59,6 @@ function todayClosing(c: Cafe, detail: Detail): string {
   const day = new Date().getDay()
   return formatHour(detail.hours?.find((hours) => hours.day === day)?.close ?? c.closes)
 }
-
-const TAG_ORDER = ['mall', 'street', 'takeaway', 'view', 'window', 'outdoor', 'tea', 'decaf', 'food', 'laptop', 'quiet', 'pet', 'late'] as const
 
 export default function App() {
   const [stage, setStage] = useState<Stage>(() => (recognitionSupported() ? 'idle' : 'unsupported'))
@@ -64,6 +77,7 @@ export default function App() {
   const handleTranscriptRef = useRef<((text: string) => Promise<void>) | null>(null)
   const continuationTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const activityTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const skipRef = useRef<(() => void) | null>(null)
   const pinnedRef = useRef(false)
 
   useEffect(() => {
@@ -99,8 +113,21 @@ export default function App() {
     for (let i = 0; i < picks.length; i++) {
       if (runRef.current !== run) return
       setSlide(i)
-      await speak(narration(picks[i], i), SPEECH_LANG)
-      await new Promise((r) => setTimeout(r, 900))
+      const detail = DETAILS[picks[i].cafe.id] ?? { photos: [], dishes: [], tags: [] }
+      const wait = (task: Promise<void>) => new Promise<boolean>((resolve) => {
+        let finished = false
+        const finish = (skipped: boolean) => {
+          if (finished) return
+          finished = true
+          if (skipRef.current === skip) skipRef.current = null
+          resolve(skipped)
+        }
+        const skip = () => finish(true)
+        skipRef.current = skip
+        void task.then(() => finish(false))
+      })
+      const skipped = await wait(speak(narration(picks[i], i, detail), SPEECH_LANG))
+      if (!skipped) await wait(new Promise<void>((resolve) => setTimeout(resolve, 900)))
     }
     if (runRef.current !== run) return
     setSlide(picks.length)
@@ -241,7 +268,10 @@ export default function App() {
     const r = results[Math.min(slide, results.length - 1)]
     const c = r.cafe
     return (
-      <main className="stage deck" onClick={done ? startListening : () => setSlide((s) => Math.min(s + 1, results.length))}>
+      <main className="stage deck" onClick={done ? startListening : () => {
+        stopSpeaking()
+        skipRef.current?.()
+      }}>
         {done ? (
           <>
             <div className="mark small">随口咖</div>
@@ -265,13 +295,14 @@ export default function App() {
             </div>
             <h1 className="cafe-name">{c.nameZh || c.name}</h1>
             <div className="cafe-sub">{c.nameZh ? c.name : ''}</div>
-            <p className="reason">{signatureZh(c)}</p>
             {(() => {
               const detail = DETAILS[c.id] ?? { photos: [], dishes: [], tags: [] }
+              const reason = blurb(c, detail)
               const busy = estimateBusy(c, detail, new Date())
               const tags = [...detail.tags].sort((a, b) => TAG_ORDER.indexOf(a) - TAG_ORDER.indexOf(b)).slice(0, 5)
               return (
                 <>
+                  {reason ? <p className="reason">{reason}</p> : null}
                   <div className="facts">
                     <span>{`步行 ${r.minutes} 分钟`}</span>
                     <span>{priceMarks(c.price)}</span>
