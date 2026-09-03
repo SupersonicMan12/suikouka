@@ -43,6 +43,37 @@ export type Tag =
   | 'matcha'
   | 'step-free'
 
+export type TagKey =
+  | 'view'
+  | 'window'
+  | 'street'
+  | 'mall'
+  | 'takeaway'
+  | 'decaf'
+  | 'tea'
+  | 'food'
+  | 'outdoor'
+  | 'laptop'
+  | 'quiet'
+  | 'pet'
+  | 'late'
+
+export interface DayHours {
+  day: number
+  open: number
+  close: number
+}
+
+export interface Detail {
+  photos: string[]
+  dishes: string[]
+  hours?: DayHours[]
+  tags: TagKey[]
+  tables?: number
+  popularity?: number
+  dpScores?: { taste: number; env: number; service: number }
+}
+
 /**
  * Every axis runs 0..100. These are the dials the Vibe Compass moves, and the
  * distance between a reader's dials and a cafe's axes is the whole ranking.

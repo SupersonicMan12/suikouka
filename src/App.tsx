@@ -1,9 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import './App.css'
 import { CAFES } from './data/cafes'
+import { DETAILS } from './data/details'
 import { SIGNATURES_ZH } from './data/signaturesZh'
-import type { Cafe } from './data/types'
-import { isMoreCommand, type Intent } from './lib/intent'
+import { TAG_LABELS } from './data/tagLabels'
+import type { Cafe, Detail } from './data/types'
+import { estimateBusy } from './lib/busy'
+import { isMoreCommand, navCommand, type Intent } from './lib/intent'
 import { rank } from './lib/match'
 import { rankNear, type Anchor, type NearRanked } from './lib/near'
 import { parseWithQwen } from './lib/qwen'
@@ -31,11 +34,18 @@ function priceMarks(p: Cafe['price']): string {
   return '¥'.repeat(p)
 }
 
-function closes(c: Cafe): string {
-  const h = Math.floor(c.closes % 24)
-  const m = Math.round((c.closes % 1) * 60)
+function formatHour(value: number): string {
+  const h = Math.floor(value % 24)
+  const m = Math.round((value % 1) * 60)
   return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`
 }
+
+function todayClosing(c: Cafe, detail: Detail): string {
+  const day = new Date().getDay()
+  return formatHour(detail.hours?.find((hours) => hours.day === day)?.close ?? c.closes)
+}
+
+const TAG_ORDER = ['mall', 'street', 'view', 'window', 'outdoor', 'tea', 'decaf', 'food', 'laptop', 'quiet', 'pet', 'late'] as const
 
 export default function App() {
   const [stage, setStage] = useState<Stage>(() => (recognitionSupported() ? 'idle' : 'unsupported'))
@@ -45,15 +55,21 @@ export default function App() {
   const [slide, setSlide] = useState(0)
   const [round, setRound] = useState(0)
   const [notice, setNotice] = useState('')
+  const [activity, setActivity] = useState(false)
   const anchorRef = useRef<Anchor>({ kind: 'pin', ...CENTER })
   const listenRef = useRef<ListenHandle | null>(null)
   const intentRef = useRef<Intent | null>(null)
   const runRef = useRef(0)
+  const continuationCountRef = useRef(0)
+  const continuationTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const activityTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     primeVoices()
     return () => {
       listenRef.current?.stop()
+      if (continuationTimerRef.current) clearTimeout(continuationTimerRef.current)
+      if (activityTimerRef.current) clearTimeout(activityTimerRef.current)
       stopSpeaking()
     }
   }, [])
@@ -71,6 +87,10 @@ export default function App() {
 
   const present = useCallback(async (picks: NearRanked[], run: number) => {
     setResults(picks)
+    for (const pick of picks) {
+      const photo = DETAILS[pick.cafe.id]?.photos[0]
+      if (photo) new Image().src = photo
+    }
     setSlide(0)
     setStage('deck')
     for (let i = 0; i < picks.length; i++) {
@@ -89,9 +109,59 @@ export default function App() {
       const run = ++runRef.current
       setStage('thinking')
       setInterim(text)
+      const destination = navCommand(text)
+      if (destination !== null && results.length > destination) {
+        const target = results[destination].cafe
+        window.location.href = `https://uri.amap.com/navigation?to=${target.lng},${target.lat},${encodeURIComponent(target.nameZh || target.name)}&mode=walk&src=suikouka`
+        return
+      }
       const more = isMoreCommand(text) && intentRef.current
       const parsed = more ? (intentRef.current as Intent) : await parseWithQwen(text)
       if (runRef.current !== run) return
+      if (!more && !parsed.complete && continuationCountRef.current < 1) {
+        continuationCountRef.current += 1
+        setNotice('接着说……')
+        setStage('listening')
+        listenRef.current?.stop()
+        const continuationRun = run
+        let active = true
+        const finishOriginal = () => {
+          if (!active || runRef.current !== continuationRun) return
+          active = false
+          if (continuationTimerRef.current) clearTimeout(continuationTimerRef.current)
+          listenRef.current?.stop()
+          intentRef.current = parsed
+          setIntent(parsed)
+          const ranked = rank(CAFES, parsed.axes, parsed.filters, parsed.weights)
+          const picks = rankNear(ranked, anchorRef.current).slice(0, 3)
+          if (picks.length > 0) void present(picks, continuationRun)
+        }
+        listenRef.current = listenOnce(
+          SPEECH_LANG,
+          setInterim,
+          (next) => {
+            if (!active) return
+            active = false
+            if (continuationTimerRef.current) clearTimeout(continuationTimerRef.current)
+            void handleTranscript(`${text}，${next}`)
+          },
+          (err) => {
+            if (err === 'no-speech') finishOriginal()
+            else if (active) {
+              active = false
+              setStage('idle')
+              setNotice('这台浏览器的语音识别开小差了')
+            }
+          },
+          () => {
+            setActivity(true)
+            if (activityTimerRef.current) clearTimeout(activityTimerRef.current)
+            activityTimerRef.current = setTimeout(() => setActivity(false), 400)
+          },
+        )
+        continuationTimerRef.current = setTimeout(finishOriginal, 5000)
+        return
+      }
       intentRef.current = parsed
       setIntent(parsed)
       const nextRound = more ? round + 1 : 0
@@ -106,7 +176,7 @@ export default function App() {
       }
       void present(picks, run)
     },
-    [present, round],
+    [present, results, round],
   )
 
   const deepLinkDone = useRef(false)
@@ -123,6 +193,7 @@ export default function App() {
     locate()
     setInterim('')
     setNotice('')
+    continuationCountRef.current = 0
     setStage('listening')
     listenRef.current?.stop()
     listenRef.current = listenOnce(
@@ -134,6 +205,11 @@ export default function App() {
         if (err === 'no-speech') setNotice('没听清，再点一下试试')
         else if (err === 'not-allowed') setNotice('需要麦克风权限才能听你说')
         else setNotice('这台浏览器的语音识别开小差了')
+      },
+      () => {
+        setActivity(true)
+        if (activityTimerRef.current) clearTimeout(activityTimerRef.current)
+        activityTimerRef.current = setTimeout(() => setActivity(false), 400)
       },
     )
   }, [handleTranscript, locate])
@@ -158,18 +234,51 @@ export default function App() {
             <div className="mark small">随口咖</div>
             <p className="tagline">点一下，再说一句</p>
             <p className="hint">说「换一批」看下三家</p>
+            <p className="hint">说「导航第二家」可以直接去</p>
           </>
         ) : (
           <article className="slide" key={slide}>
             <div className="ordinal">{ORDINALS_ZH[slide]}</div>
+            <div className="photo-block">
+              {DETAILS[c.id]?.photos[0] ? (
+                <img src={DETAILS[c.id].photos[0]} alt="" referrerPolicy="no-referrer" />
+              ) : (
+                <svg viewBox="0 0 160 120" role="img" aria-label="咖啡杯占位">
+                  <path d="M45 43h60v32c0 16-12 26-30 26S45 91 45 75z" />
+                  <path d="M105 52h12c12 0 16 8 12 17-3 7-9 10-24 10M39 104h81" />
+                  <path d="M61 30c-5-8 7-10 2-19M81 30c-5-8 7-10 2-19" />
+                </svg>
+              )}
+            </div>
             <h1 className="cafe-name">{c.nameZh || c.name}</h1>
             <div className="cafe-sub">{c.nameZh ? c.name : ''}</div>
             <p className="reason">{signatureZh(c)}</p>
-            <div className="facts">
-              <span>{`步行 ${r.minutes} 分钟`}</span>
-              <span>{priceMarks(c.price)}</span>
-              <span>{`开到 ${closes(c)}`}</span>
-            </div>
+            {(() => {
+              const detail = DETAILS[c.id] ?? { photos: [], dishes: [], tags: [] }
+              const busy = estimateBusy(c, detail, new Date())
+              const tags = [...detail.tags].sort((a, b) => TAG_ORDER.indexOf(a) - TAG_ORDER.indexOf(b)).slice(0, 5)
+              return (
+                <>
+                  <div className="facts">
+                    <span>{`步行 ${r.minutes} 分钟`}</span>
+                    <span>{priceMarks(c.price)}</span>
+                    <span>{`开到 ${todayClosing(c, detail)}`}</span>
+                    {detail.tables ? <span>{`约 ${detail.tables} 桌`}</span> : null}
+                  </div>
+                  {busy ? (
+                    <div className="busy">
+                      <span>预估·{busy.label}</span>
+                      <span className="busy-meter" aria-label={busy.label}>
+                        {[0, 1, 2].map((dot) => <i key={dot} className={dot <= busy.level ? 'filled' : ''} />)}
+                      </span>
+                      <small>{busy.note}</small>
+                    </div>
+                  ) : null}
+                  {tags.length > 0 ? <div className="tag-pills">{tags.map((tag) => <span key={tag}>{TAG_LABELS[tag]}</span>)}</div> : null}
+                  {detail.dishes.length > 0 ? <div className="dishes">推荐：{detail.dishes.slice(0, 3).join(' / ')}</div> : null}
+                </>
+              )
+            })()}
             <div className="street">{c.streetZh || c.street}</div>
             <div className="dots">
               {results.map((_, i) => (
@@ -184,14 +293,19 @@ export default function App() {
 
   return (
     <main className="stage" onClick={stage === 'idle' ? startListening : undefined}>
-      <div className={`mark ${stage === 'listening' ? 'breathing' : ''}`}>随口咖</div>
+      <div className={`mark ${stage === 'listening' ? 'breathing' : ''} ${activity ? 'active' : ''}`}>随口咖</div>
       {stage === 'idle' && (
         <>
           <p className="tagline">点一下，随口说说你的场合和需求</p>
           <p className="hint">「我想找个安静的地方工作两小时，别太贵」</p>
         </>
       )}
-      {stage === 'listening' && <p className="tagline live">{interim || '在听……'}</p>}
+      {stage === 'listening' && (
+        <>
+          <p className="tagline live">{interim || '在听……'}</p>
+          <p className="hint">说完停一下，我就开始找</p>
+        </>
+      )}
       {stage === 'thinking' && (
         <>
           <p className="tagline">{interim}</p>

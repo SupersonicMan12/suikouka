@@ -29,6 +29,16 @@
   animation: breathe 2.2s ease-in-out infinite;
 }
 
+.mark.active {
+  animation: activity-pulse 0.4s ease-out;
+}
+
+@keyframes activity-pulse {
+  0% { transform: scale(1); text-shadow: none; }
+  45% { transform: scale(1.1); text-shadow: 0 0 0.8rem color-mix(in srgb, var(--accent) 45%, transparent); }
+  100% { transform: scale(1); text-shadow: none; }
+}
+
 @keyframes breathe {
   0%,
   100% {
@@ -75,9 +85,43 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.9rem;
+  gap: clamp(0.35rem, 1.5dvh, 0.9rem);
   animation: arrive 0.7s ease both;
   max-width: 34em;
+}
+
+.photo-block {
+  width: min(100%, 31rem);
+  aspect-ratio: 4 / 3;
+  max-height: 38dvh;
+  overflow: hidden;
+  border: 1px solid var(--paper);
+  border-radius: 14px;
+  padding: 5px;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 16%, transparent);
+}
+
+.photo-block img,
+.photo-block svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 9px;
+}
+
+.photo-block img {
+  object-fit: cover;
+  filter: sepia(0.35) contrast(0.95);
+}
+
+.photo-block svg {
+  fill: none;
+  stroke: var(--faded);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  padding: 20%;
 }
 
 @keyframes arrive {
@@ -113,9 +157,10 @@
 }
 
 .reason {
-  font-size: 1.12rem;
+  font-size: clamp(0.95rem, 4vw, 1.12rem);
   line-height: 1.7;
   color: var(--ink);
+  margin: 0;
 }
 
 .facts {
@@ -123,8 +168,61 @@
   gap: 1.2rem;
   flex-wrap: wrap;
   justify-content: center;
-  font-size: 0.95rem;
+  font-size: clamp(0.78rem, 3.2vw, 0.95rem);
   color: var(--ink);
+}
+
+.busy {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ink);
+  font-size: 0.88rem;
+}
+
+.busy-meter {
+  display: inline-flex;
+  gap: 0.25rem;
+}
+
+.busy-meter i {
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+}
+
+.busy-meter i.filled {
+  background: var(--accent);
+}
+
+.busy small {
+  color: var(--faded);
+  font-size: 0.75rem;
+}
+
+.tag-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.tag-pills span {
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 0.75rem;
+  padding: 0.18rem 0.55rem;
+}
+
+.dishes {
+  color: var(--ink);
+  font-size: 0.84rem;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .facts span {
