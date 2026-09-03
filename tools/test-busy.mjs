@@ -32,5 +32,5 @@ assert.equal(estimateBusy(cafe({ axes: { focus: 80, energy: 20, linger: 70, adve
 assert.equal(estimateBusy(cafe(), detail({ popularity: 0 }), new Date(2026, 7, 8, 10)).level, 1)
 assert.equal(estimateBusy(cafe(), detail({ popularity: 1 }), new Date(2026, 7, 8, 10)).level, 2)
 assert.equal(estimateBusy(cafe(), detail({ hours: [{ day: 6, open: 12, close: 16 }] }), new Date(2026, 7, 8, 10)), null)
-assert.match(estimateBusy(cafe(), detail(), new Date(2026, 7, 8, 10)).note, /预估/)
+assert.match(estimateBusy(cafe(), detail(), new Date(2026, 7, 8, 10)).note, /周末/)
 console.log('busy assertions: 10 passed')

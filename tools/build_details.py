@@ -76,7 +76,34 @@ def parse_hours(text):
 def amap_dishes(value):
     if not value:
         return []
-    return [part.strip() for part in re.split(r'[,，、/；;|]', str(value)) if part.strip()]
+    dishes = []
+    for part in re.split(r'[,，、/；;|]', str(value)):
+        name = part.strip()
+        if not name:
+            continue
+        if re.fullmatch(r'(?:coffee|咖啡|cafe|café|drink|饮品)', name, re.IGNORECASE):
+            continue
+        if re.fullmatch(r'[A-Za-z]+', name) and len(name) <= 6:
+            continue
+        dishes.append(name)
+    return dishes
+
+
+def detail_tags(value, hours, cafe):
+    seen = set()
+    result = []
+    for tag in value if isinstance(value, list) else []:
+        if not isinstance(tag, str) or tag == 'late' or tag in seen:
+            continue
+        if tag == 'street' and 'mall' in value:
+            continue
+        seen.add(tag)
+        result.append(tag)
+    closes = [entry['close'] for entry in hours or [] if isinstance(entry.get('close'), (int, float))]
+    representative_close = max(closes, default=cafe['closes'])
+    if representative_close >= 22:
+        result.append('late')
+    return result
 
 
 def main():
@@ -100,6 +127,7 @@ def main():
             if name not in dishes:
                 dishes.append(name)
         hours = parse_hours(amap.get('opentime2')) or parse_hours(amap.get('open_time'))
+        cafe_tags = detail_tags(tags.get(cafe['id'], []), hours, cafe)
         scores = dp.get('scoreTextList') or []
         dp_scores = {'taste': scores[0], 'env': scores[1], 'service': scores[2]} if len(scores) >= 3 else None
         popularity = dp.get('picCountStr') or dp.get('reviewCountText')
@@ -114,7 +142,7 @@ def main():
             'photos': photos[:4],
             'dishes': dishes[:6],
             'hours': hours,
-            'tags': tags.get(cafe['id'], []),
+            'tags': cafe_tags,
             'tables': round(cafe['seats'] / 2.4) if cafe['seats'] > 0 else None,
             'dpScores': dp_scores,
         }
