@@ -45,7 +45,7 @@ function todayClosing(c: Cafe, detail: Detail): string {
   return formatHour(detail.hours?.find((hours) => hours.day === day)?.close ?? c.closes)
 }
 
-const TAG_ORDER = ['mall', 'street', 'view', 'window', 'outdoor', 'tea', 'decaf', 'food', 'laptop', 'quiet', 'pet', 'late'] as const
+const TAG_ORDER = ['mall', 'street', 'takeaway', 'view', 'window', 'outdoor', 'tea', 'decaf', 'food', 'laptop', 'quiet', 'pet', 'late'] as const
 
 export default function App() {
   const [stage, setStage] = useState<Stage>(() => (recognitionSupported() ? 'idle' : 'unsupported'))
@@ -61,6 +61,7 @@ export default function App() {
   const intentRef = useRef<Intent | null>(null)
   const runRef = useRef(0)
   const continuationCountRef = useRef(0)
+  const handleTranscriptRef = useRef<((text: string) => Promise<void>) | null>(null)
   const continuationTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const activityTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -143,7 +144,7 @@ export default function App() {
             if (!active) return
             active = false
             if (continuationTimerRef.current) clearTimeout(continuationTimerRef.current)
-            void handleTranscript(`${text}，${next}`)
+            void handleTranscriptRef.current?.(`${text}，${next}`)
           },
           (err) => {
             if (err === 'no-speech') finishOriginal()
@@ -178,6 +179,9 @@ export default function App() {
     },
     [present, results, round],
   )
+  useEffect(() => {
+    handleTranscriptRef.current = handleTranscript
+  }, [handleTranscript])
 
   const deepLinkDone = useRef(false)
   useEffect(() => {

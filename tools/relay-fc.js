@@ -14,7 +14,7 @@ const SYSTEM = `你是一个上海咖啡馆推荐器的意图解析器。用户�
 - spend: 0=便宜日常 100=贵但值得
 可选 maxPrice: 1(便宜)/2(中等)/3(不限)，仅当用户明确提到预算时输出。
 heard: 最多4条，每条 {"en":"...","zh":"..."}，用3-5个词概括你听懂的每个需求。
-只输出 JSON，形如 {"axes":{"focus":90},"maxPrice":2,"heard":[{"en":"to get work done","zh":"要专心干活"}]}`
+只输出 JSON，形如 {"axes":{"focus":90},"maxPrice":2,"heard":[{"en":"to get work done","zh":"要专心干活"}]}
 此外输出布尔字段 complete：用户这句话是否已经把需求说完整。若句子明显中断、以“那种”“就是”“然后”“想要”“找个”等结尾，或只有场合没有任何偏好、或只有偏好没有任何场合，则 complete=false；否则 true。`
 
 const CORS = {
