@@ -33,6 +33,7 @@ def cafes():
         result.append({
             'id': id_match.group(1),
             'seats': int(get(r'seats:\s*(\d+)', '0')),
+            'source': get(r"source:\s*'([^']+)'", None),
             'opens': float(get(r'opens:\s*([\d.]+)', '0')),
             'closes': float(get(r'closes:\s*([\d.]+)', '24')),
             'focus': int(get(r'axes:\s*\{\s*focus:\s*(\d+)', '0')),
@@ -143,7 +144,7 @@ def main():
             'dishes': dishes[:6],
             'hours': hours,
             'tags': cafe_tags,
-            'tables': round(cafe['seats'] / 2.4) if cafe['seats'] > 0 else None,
+            'tables': round(cafe['seats'] / 2.4) if cafe['source'] != 'imported' and cafe['seats'] > 0 else None,
             'dpScores': dp_scores,
         }
         records.append((cafe['id'], raw))

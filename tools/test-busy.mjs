@@ -22,7 +22,7 @@ const cafe = (overrides = {}) => ({
   price: 2,
   ...overrides,
 })
-const detail = (overrides = {}) => ({ photos: [], dishes: [], tags: [], ...overrides })
+const detail = (overrides = {}) => ({ photos: [], dishes: [], tags: [], tables: 12, ...overrides })
 assert.equal(estimateBusy(cafe(), detail(), new Date(2026, 7, 9, 23)), null)
 assert.equal(estimateBusy(cafe({ seats: 10 }), detail(), new Date(2026, 7, 8, 8, 30)).level, 0)
 assert.equal(estimateBusy(cafe(), detail(), new Date(2026, 7, 8, 10)).level, 2)
